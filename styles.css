@@ -1,0 +1,60 @@
+/* styles.css */
+/* 新增动画关键帧 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageSlide {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 更新页面动画 */
+.page {
+    /* 原有样式保持不变 */
+    animation: pageSlide 0.8s ease-out forwards;
+}
+
+/* 内容入场动画 */
+.content.animate-in {
+    animation: slideIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+/* 按钮悬浮微动效 */
+button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+/* 背景图片动态模糊（可选） */
+.page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(5px);
+    z-index: -1;
+    opacity: 0.8;
+    transition: filter 0.5s;
+}
+
+.page.active::after {
+    filter: blur(0);
+}
